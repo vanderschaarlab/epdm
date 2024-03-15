@@ -20,7 +20,7 @@ def exists(x):
 
 def once(fn):
     called = False
-    
+
     @wraps(fn)
     def inner(x):
         nonlocal called
@@ -28,7 +28,7 @@ def once(fn):
             return
         called = True
         return fn(x)
-    
+
     return inner
 
 
@@ -38,10 +38,10 @@ def default(val, d):
     return d() if callable(d) else d
 
 
-def cast_tuple(t, length = 1):
+def cast_tuple(t, length=1):
     if isinstance(t, tuple):
         return t
-    return ((t,) * length)
+    return (t,) * length
 
 
 def divisible_by(numer, denom):
@@ -85,18 +85,9 @@ def unnormalize_to_zero_to_one(t):
     return (t + 1) * 0.5
 
 
-def num_to_groups(num, divisor):
-    groups = num // divisor
-    remainder = num % divisor
-    arr = [divisor] * groups
-    if remainder > 0:
-        arr.append(remainder)
-    return arr
-
-
 def pkl_load(file_path):
-    with open(file_path, 'rb') as fr:
-        data = pickle.load(fr, encoding='bytes')
+    with open(file_path, "rb") as fr:
+        data = pickle.load(fr, encoding="bytes")
     return data
 
 
